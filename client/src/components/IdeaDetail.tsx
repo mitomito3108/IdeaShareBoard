@@ -8,7 +8,7 @@ import { Idea } from "@/lib/types";
 interface IdeaDetailProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  idea: Idea | null;
+  idea?: Idea;
   onEdit: () => void;
   onDelete: () => void;
 }

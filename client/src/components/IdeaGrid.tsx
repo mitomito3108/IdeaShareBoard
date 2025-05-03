@@ -39,7 +39,7 @@ interface IdeaGridProps {
 }
 
 export default function IdeaGrid({ ideas, onReorder, onUpdate, onDelete }: IdeaGridProps) {
-  const [selectedIdea, setSelectedIdea] = useState<Idea | null>(null);
+  const [selectedIdea, setSelectedIdea] = useState<Idea | undefined>(undefined);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
@@ -90,7 +90,7 @@ export default function IdeaGrid({ ideas, onReorder, onUpdate, onDelete }: IdeaG
     if (selectedIdea) {
       onDelete(selectedIdea.id);
       setIsDeleteOpen(false);
-      setSelectedIdea(null);
+      setSelectedIdea(undefined);
     }
   };
 
@@ -148,7 +148,7 @@ export default function IdeaGrid({ ideas, onReorder, onUpdate, onDelete }: IdeaG
       <IdeaDetail
         open={isDetailOpen}
         onOpenChange={setIsDetailOpen}
-        idea={selectedIdea}
+        idea={selectedIdea || undefined}
         onEdit={handleEdit}
         onDelete={handleDeleteClick}
       />
@@ -158,7 +158,7 @@ export default function IdeaGrid({ ideas, onReorder, onUpdate, onDelete }: IdeaG
         open={isFormOpen}
         onOpenChange={setIsFormOpen}
         onSubmit={handleUpdateIdea}
-        idea={selectedIdea}
+        idea={selectedIdea || undefined}
         isEditing={true}
       />
 
